@@ -1,6 +1,19 @@
+@import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
+
+
 .page-empty {
     background: url('../images/bg.png') top left;
 }
+
+.mosaic-title {
+    text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+
+    color: #666;
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 150px;
+    font-weight: 700;
+}
+
 
 #mosaic_container {
     display: relative;

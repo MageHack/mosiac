@@ -4,4 +4,3 @@ app/design/frontend/base/default/template/meanbee/mosaic/ app/design/frontend/ba
 app/etc/modules/* app/etc/modules/
 js/meanbee/mosaic/ js/meanbee/mosaic/
 skin/frontend/base/default/meanbee/mosaic skin/frontend/base/default/meanbee/mosaic
-Meanbee_Mosaic.xml var/connect/Meanbee_Mosaic.xml

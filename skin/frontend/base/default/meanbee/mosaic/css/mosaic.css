@@ -1,7 +1,5 @@
 #mosaic_container {
     display: relative;
-    /*padding: 5px;*/
-    /*margin-bottom: 20px;*/
 }
 
 #mosaic_container .box {
@@ -25,5 +23,36 @@
 #mosaic_container .col3, #mosaic_container .col3 img {
     width: 280px;
     height: 280px;
+}
+
+#mosaic_container .col3, #mosaic_container .col3 img {
+    width: 280px;
+    height: 280px;
+}
+
+
+
+#mosaic_container .expanded img {
+    width: 280px;
+    height: 280px;
+}
+#mosaic_container img {
+    float: left;
+}
+
+#mosaic_container .details {
+    width: 190px;
+    float: left;
+    margin-left: 10px;
+}
+
+#mosaic_container .large,
+#mosaic_container .large img {
+    width: 580px !important;
+    height: 580px !important;
+}
+
+#mosaic_container .large img {
+
 }
 

@@ -1,0 +1,30 @@
+#mosaic_container {
+    display: relative;
+    margin: 0 auto;
+    /*padding: 5px;*/
+    /*margin-bottom: 20px;*/
+}
+
+#mosaic_container .box {
+    float: left;
+    display: block;
+    margin: 5px;
+    padding: 5px;
+    background: #D8D5D2;
+}
+
+#mosaic_container .col1, #mosaic_container .col1 img {
+    width: 80px;
+    height: 80px;
+}
+
+#mosaic_container .col2, #mosaic_container .col2 img {
+    width: 180px;
+    height: 180px;
+}
+
+#mosaic_container .col3, #mosaic_container .col3 img {
+    width: 280px;
+    height: 280px;
+}
+

@@ -1,0 +1,21 @@
+<?php // Temporary, while I wait for Tom's shenanigans ?>
+<?php $_products = Mage::getModel('catalog/product')->getCollection()->addAttributeToSelect('image')->addAttributeToSelect('name')->addAttributeToFilter('visibility', '4')->setPageSize(15)->setCurPage(1); ?>
+
+<div id="mosaic_container">
+    <?php foreach($_products as $_product): ?>
+        <div class="box col<?php echo rand(1, 3) ?>">
+            <img src="<?php echo $_product->getImageUrl(); ?>" alt="<?php echo $_product->getName() ?>"/>
+        </div>
+    <?php endforeach ?>
+</div>
+
+
+<script type="text/javascript">
+    $j(function() {
+        $j('#mosaic_container').masonry({
+            itemSelector: '.box',
+            columnWidth: 100,
+            isAnimated: true
+        });
+    })
+</script>

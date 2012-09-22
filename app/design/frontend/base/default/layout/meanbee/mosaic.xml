@@ -3,8 +3,12 @@
         <update handle="page_empty"/>
 
         <reference name="head">
+            <action method="addCss"><name>meanbee/mosaic/css/mosaic.css</name></action>
             <action method="addJs"><name>meanbee/mosaic/jquery.min.js</name></action>
             <action method="addJs"><name>meanbee/mosaic/jquery.masonry.min.js</name></action>
+        </reference>
+        <reference name="content">
+            <block name="meanbee.mosaic" type="core/template" template="meanbee/mosaic/mosaic.phtml"></block>
         </reference>
     </meanbee_mosaic_index_index>
 </layout>

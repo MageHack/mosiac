@@ -14,17 +14,15 @@
 
 <script type="text/javascript">
     $j(function() {
-        $j('#mosaic_container').masonry({
+        $j('#mosaic_container').isotope({
             itemSelector: '.box',
-            columnWidth: 100,
-            isAnimated: true
+            animationEngine: 'jquery'
         });
 
 
         $j('#mosaic_container .box').click(function() {
-
             $j('#mosaic_container').animate({width: '300px'}, {duration: 1000, complete: function() {
-                $j('#mosaic_container').masonry('reload');
+                $j('#mosaic_container').isotope('reLayout');
             }});
         })
     })

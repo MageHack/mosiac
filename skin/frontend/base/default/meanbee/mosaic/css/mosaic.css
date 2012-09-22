@@ -27,3 +27,13 @@
     height: 280px;
 }
 
+#mosaic_container .large,
+#mosaic_container .large img {
+    width: 580px !important;
+    height: 580px !important;
+}
+
+#mosaic_container .large img {
+
+}
+

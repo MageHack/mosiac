@@ -13,28 +13,40 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
             );
 
-
             $collection = Mage::getResourceModel('catalog/product_collection')
-                            ->addAttributeToSelect('image')
+                            ->addAttributeToSelect(array('image', 'short_description', 'name', 'price'))
                             ->addAttributeToFilter('visibility', $visibility);
 
             $collection2 = Mage::getResourceModel('reports/product_collection')
                             ->addOrderedQty();
 
-
-            foreach($collection2 as $item) {
-                if($i = $collection->getItemById($item->getId())) {
-                    $i->setData("ordered_qty", (int) $item->getOrderedQty());
-                }
-            }
+            $qtys = array();
 
             foreach($collection as $item) {
-                if(!$item->getOrderedQty()) {
-                    $item->setOrderedQty(0);
+                if ($i = $collection2->getItemById($item->getId())) {
+                    $item->setData("ordered_qty", (int) $i->getOrderedQty());
+                } else {
+                    $item->setData("ordered_qty", 0);
                 }
+
+                array_push($qtys, $item->getOrderedQty());
             }
 
-            $collection->getSelect()->order('ordered_qty');
+            sort($qtys);
+            $total = count($qtys);
+            $group_size = (int) floor($total / $this->_bestselling_groups);
+            $first_boundary = $qtys[$group_size];
+            $second_boundary = $qtys[$group_size * 2];
+
+            foreach ($collection as $item) {
+                if ($item->getOrderedQty() <= $first_boundary) {
+                    $item->setBestsellerGroup(1);
+                } elseif ($item->getOrderedQty() <= $second_boundary) {
+                    $item->setBestsellerGroup(2);
+                } else {
+                    $item->setBestsellerGroup(3);
+                }
+            }
 
             return $collection;
         }
@@ -43,11 +55,3 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
 
 
 }
-
-
-//            /** @var $collection Mage_Catalog_Model_Resource_Product_Collection */
-//            $collection = Mage::getModel('catalog/product')->getCollection();
-//            $collection->joinTable('sales_flat_order_item', 'product_id = entity_id', 'product_id', null, 'LEFT');
-//            $collection->getSelect()->columns('COUNT(product_id) AS ordered_qty');
-//            $collection->getSelect()->group('sales_flat_order_item.product_id');
-//            echo $collection->getSelect()->assemble();

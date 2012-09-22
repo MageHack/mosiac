@@ -7,10 +7,10 @@
 
 <div id="mosaic_container">
     <?php foreach($_products as $_product): ?>
-        <div class="box col<?php echo rand(1, 3) ?>">
+        <div class="box col<?php echo $_product->getBestsellerGroup() ?>">
             <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
             <div style="display:none" class="summary">
-                <h1><?php echo $_product->getName() ?></h1>
+                <p class="product-name"><?php echo $_product->getName() ?></p>
                 <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
                 <a href="#" class="more-info" onclick="return false;">i</a>
             </div>
@@ -24,40 +24,30 @@
 </div>
 
 <script type="text/javascript">
-    var largeSize="480px";
     $j(function() {
         $j('#mosaic_container').masonry({
             itemSelector: '.box',
             columnWidth: 100,
-            isAnimated: true,
-            animationOptions: {
-                complete: function() {
-                    if ($j(this).hasClass('clicked')) {
-                        $j(this).animate({width: largeSize, height: largeSize}, 1000, function() {
-                            $j('#mosaic_container').masonry('reload');
-                            $j(this).removeClass('clicked');
-                            $j(this).addClass('expanded');
-                            $j(this).find('.summary').fadeIn(100)
-                        });
-                    }
-                }
-            }
+            isAnimated: true
         });
 
         $j('#mosaic_container .box').click(function() {
+
             $j('#mosaic_container .box').removeClass('expanded');
-            $j('#mosaic_container .box .details').fadeOut(100);
-            $j('#mosaic_container .box').css({width: '', height: '', zIndex: ''});
-            $j('#mosaic_container .box').css({width: '', height: '', zIndex: ''});
-            $j('#mosaic_container .box img').css({width: '', height: ''});
-            $j(this).css({zIndex: 999})
-            $j(this).addClass('clicked');
-//            $j(this).animate({width: largeSize, height: largeSize}, 1000, function() {
-                $j('#mosaic_container .box').first().before(this);
+            $j('#mosaic_container .box').css({zIndex: ''});
+            $j('#mosaic_container .box .summary').fadeOut(100);
+
+
+            $j(this).addClass('expanded');
+            $j(this).find('.summary').fadeIn(100);
+
+            $j(this).css({zIndex: 999});
+
+            setTimeout(function() {
                 $j('#mosaic_container').masonry('reload');
-//            })
-//            $j(this).find('img').animate({width: largeSize, height: largeSize}, 1000);
-//            $j('#mosaic_container').masonry('reload');
+            }, 100);
+
         })
+
     })
 </script>

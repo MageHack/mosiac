@@ -1,5 +1,8 @@
 @import url(http://fonts.googleapis.com/css?family=PT+Sans+Narrow);
 
+body {
+    font-family: 'PT Sans Narrow', sans-serif;
+}
 
 .page-empty {
     background: url('../images/bg.png') top left;
@@ -7,9 +10,7 @@
 
 .mosaic-title {
     text-shadow: rgba(0,0,0,0.5) -1px 0, rgba(0,0,0,0.3) 0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
-
     color: #666;
-    font-family: 'PT Sans Narrow', sans-serif;
     font-size: 150px;
     font-weight: 700;
 }
@@ -67,20 +68,28 @@
     height: 280px;
 }
 
+#mosaic_container .summary {
+    background-color: #333;
+    color: #EEE;
+    position: absolute;
+    bottom: 5px;
+    opacity: 0.8;
+    padding: 5px;
+    width: 270px;
+}
 
+.summary p.product-name {
+    color: #EEE;
+}
 
-#mosaic_container .expanded img {
+#mosaic_container .expanded img,
+#mosaic_container .expanded {
     width: 280px;
     height: 280px;
 }
+
 #mosaic_container img {
     float: left;
-}
-
-#mosaic_container .summary {
-    width: 190px;
-    float: left;
-    margin-left: 10px;
 }
 
 .summary a.more-info {

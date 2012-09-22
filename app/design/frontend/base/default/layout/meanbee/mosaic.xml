@@ -3,6 +3,7 @@
         <update handle="page_empty"/>
 
         <reference name="head">
+            <action method="addJs"><name>meanbee/mosaic/jquery.min.js</name></action>
             <action method="addJs"><name>meanbee/mosaic/jquery.masonry.min.js</name></action>
         </reference>
     </meanbee_mosaic_index_index>

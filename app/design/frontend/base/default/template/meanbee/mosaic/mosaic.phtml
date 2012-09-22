@@ -9,10 +9,15 @@
     <?php foreach($_products as $_product): ?>
         <div class="box col<?php echo rand(1, 3) ?>">
             <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
+            <div style="display:none" class="summary">
+                <h1><?php echo $_product->getName() ?></h1>
+                <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                <a href="#" class="more-info" onclick="return false;">i</a>
+            </div>
             <div style="display:none" class="details">
                 <h1><?php echo $_product->getName() ?></h1>
-                <p><?php echo $_product->getShortDescription() ?></p>
                 <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                <p><?php echo $_product->getShortDescription() ?></p>
             </div>
         </div>
     <?php endforeach ?>
@@ -32,7 +37,7 @@
                             $j('#mosaic_container').masonry('reload');
                             $j(this).removeClass('clicked');
                             $j(this).addClass('expanded');
-                            $j(this).find('.details').fadeIn(100)
+                            $j(this).find('.summary').fadeIn(100)
                         });
                     }
                 }

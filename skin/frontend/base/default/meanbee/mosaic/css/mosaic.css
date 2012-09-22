@@ -77,8 +77,30 @@
     float: left;
 }
 
-#mosaic_container .details {
+#mosaic_container .summary {
     width: 190px;
     float: left;
     margin-left: 10px;
 }
+
+.summary a.more-info {
+    background-color: #333;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    border-radius: 15px;
+    color: #DDD;
+    font-style: italic;
+    font-size: 15px;
+    float: right;
+    opacity: 0.4;
+    padding: 0 9px 0 8px;
+    text-decoration: none;
+}
+
+.summary a.more-info:hover {
+    -webkit-transition:opacity 0.25s linear;
+    -moz-transition:opacity 0.25s linear;
+    transition:opacity 0.25s linear;
+    opacity: 0.7;
+}
+

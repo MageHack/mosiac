@@ -26,5 +26,12 @@
                 </args>
             </meanbee_mosaic>
         </routers>
+        <layout>
+            <updates>
+                <mosaic>
+                    <file>meanbee/mosaic.xml</file>
+                </mosaic>
+            </updates>
+        </layout>
     </frontend>
 </config>

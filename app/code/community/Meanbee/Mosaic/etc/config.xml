@@ -1,0 +1,30 @@
+<config>
+    <modules>
+        <Meanbee_Mosaic>
+            <version>1.0.0</version>
+        </Meanbee_Mosaic>
+    </modules>
+    <global>
+        <models>
+            <meanbee_mosaic>
+                <class>Meanbee_Mosaic_Model</class>
+            </meanbee_mosaic>
+        </models>
+        <helpers>
+            <meanbee_mosaic>
+                <class>Meanbee_Mosaic_Helper</class>
+            </meanbee_mosaic>
+        </helpers>
+    </global>
+    <frontend>
+        <routers>
+            <meanbee_mosaic>
+                <use>standard</use>
+                <args>
+                    <module>Meanbee_Mosaic</module>
+                    <frontName>mosaic</frontName>
+                </args>
+            </meanbee_mosaic>
+        </routers>
+    </frontend>
+</config>

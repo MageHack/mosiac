@@ -5,26 +5,31 @@
         </Meanbee_Mosaic>
     </modules>
     <global>
+        <blocks>
+            <mosaic>
+                <class>Meanbee_Mosaic_Block</class>
+            </mosaic>
+        </blocks>
         <models>
-            <meanbee_mosaic>
+            <mosaic>
                 <class>Meanbee_Mosaic_Model</class>
-            </meanbee_mosaic>
+            </mosaic>
         </models>
         <helpers>
-            <meanbee_mosaic>
+            <mosaic>
                 <class>Meanbee_Mosaic_Helper</class>
-            </meanbee_mosaic>
+            </mosaic>
         </helpers>
     </global>
     <frontend>
         <routers>
-            <meanbee_mosaic>
+            <Meanbee_Mosaic>
                 <use>standard</use>
                 <args>
                     <module>Meanbee_Mosaic</module>
                     <frontName>mosaic</frontName>
                 </args>
-            </meanbee_mosaic>
+            </Meanbee_Mosaic>
         </routers>
         <layout>
             <updates>

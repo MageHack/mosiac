@@ -8,7 +8,7 @@
             <action method="addJs"><name>meanbee/mosaic/jquery.masonry.min.js</name></action>
         </reference>
         <reference name="content">
-            <block name="meanbee.mosaic" type="core/template" template="meanbee/mosaic/mosaic.phtml"></block>
+            <block name="meanbee.mosaic" type="mosaic/product_list_mosaic" template="meanbee/mosaic/mosaic.phtml"></block>
         </reference>
     </meanbee_mosaic_index_index>
 </layout>

@@ -1,6 +1,7 @@
 <?php
     $_products = $this->getLoadedProductCollection();
-    $_helper = $this->helper('catalog/output');
+    $_coreHelper = $this->helper('core');
+    $_taxHelper = $this->helper('tax');
 ?>
 <h1 class="mosaic-title"><?php echo Mage::getStoreConfig('general/store_information/name') ?></h1>
 
@@ -11,12 +12,11 @@
             <div style="display:none" class="details">
                 <h1><?php echo $_product->getName() ?></h1>
                 <p><?php echo $_product->getShortDescription() ?></p>
-                <p><?php echo Mage::helper('core')->currency($_product->getPrice()) ?></p>
+                <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
             </div>
         </div>
     <?php endforeach ?>
 </div>
-
 
 <script type="text/javascript">
     var largeSize="480px";

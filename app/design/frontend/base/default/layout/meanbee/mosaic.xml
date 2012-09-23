@@ -1,15 +1,15 @@
 <layout>
-    <meanbee_mosaic_index_index>
+    <meanbee_mosaic_index_view>
         <update handle="page_empty"/>
 
         <reference name="head">
             <action method="addCss"><name>meanbee/mosaic/css/mosaic.css</name></action>
             <action method="addJs"><name>meanbee/mosaic/jquery.min.js</name></action>
             <action method="addJs"><name>meanbee/mosaic/jquery.masonry.min.js</name></action>
-            <action method="addJs"><name>meanbee/mosaic/jquery.isotope.min.js</name></action>
         </reference>
         <reference name="content">
+            <block type="catalog/layer_view" name="mosaic.topnav" template="catalog/layer/view.phtml"/>
             <block name="meanbee.mosaic" type="mosaic/product_list_mosaic" template="meanbee/mosaic/mosaic.phtml"></block>
         </reference>
-    </meanbee_mosaic_index_index>
+    </meanbee_mosaic_index_view>
 </layout>

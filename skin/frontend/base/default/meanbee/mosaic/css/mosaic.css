@@ -13,8 +13,8 @@ body {
     color: #666;
     font-size: 150px;
     font-weight: 700;
+    line-height: 125px;
 }
-
 
 #mosaic_container {
     display: relative;
@@ -27,7 +27,7 @@ body {
 
     -moz-box-shadow: 0 0px 4px rgba(0,0,0,.5);
     -webkit-box-shadow: 0 0px 4px rgba(0,0,0,.5);
-    box-shadow: 0 0 4px rgba(0, 0, 0, .5)
+    box-shadow: 0 0 4px rgba(0, 0, 0, .5);
 
     background: rgba(0, 0, 0, 0.1);
     float: left;
@@ -86,10 +86,20 @@ body {
 #mosaic_container .expanded {
     width: 280px;
     height: 280px;
+
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari and Chrome */
+    -o-transition: all 1s; /* Opera */
 }
 
 #mosaic_container img {
     float: left;
+
+    transition: all 1s;
+    -moz-transition: all 1s; /* Firefox 4 */
+    -webkit-transition: all 1s; /* Safari and Chrome */
+    -o-transition: all 1s; /* Opera */
 }
 
 .summary a.more-info {

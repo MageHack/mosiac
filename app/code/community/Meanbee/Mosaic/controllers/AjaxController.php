@@ -16,8 +16,6 @@ class Meanbee_Mosaic_AjaxController extends Mage_Core_Controller_Front_Action {
             $return['content'] = 'No category provided';
         }
 
-        $this->_setCookie('category', $this->getRequest()->getParam('p', 1));
-
         $this->getResponse()->setHeader('Content-Type', 'application/json', true)->setBody(Mage::helper('core')->jsonEncode($return));
     }
 
@@ -44,18 +42,6 @@ class Meanbee_Mosaic_AjaxController extends Mage_Core_Controller_Front_Action {
     }
 
     protected function _getProductListBlock() {
-        return $this->getLayout()->getBlock('mosaic.topnav');
+        return $this->getLayout()->getBlock('meanbee.mosaic');
     }
-
-    protected function _setCookie($key, $value) {
-        /** @var $cookie Mage_Core_Model_Cookie */
-        $cookie = Mage::getSingleton('core/cookie');
-        $cookie->set(
-            'derp',
-            $value, null, null, null, null, false
-        );
-    }
-
-
-
 }

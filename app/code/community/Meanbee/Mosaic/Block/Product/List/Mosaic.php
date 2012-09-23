@@ -3,6 +3,7 @@
 class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Product_List {
 
     protected $_bestselling_groups = 3;
+    const PAGE_SIZE = 30;
 
     protected function _getProductCollection()
     {
@@ -12,10 +13,10 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_BOTH,
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
             );
-
+            $page = $this->getRequest()->getParam('p', 1);
             $collection = parent::_getProductCollection()
                             ->addAttributeToSelect(array('image', 'short_description', 'name', 'price'))
-                            ->addAttributeToFilter('visibility', $visibility);
+                            ->addAttributeToFilter('visibility', $visibility)->setCurPage($page)->setPageSize(self::PAGE_SIZE);
 
             $collection2 = Mage::getResourceModel('reports/product_collection')
                             ->addOrderedQty();
@@ -24,6 +25,7 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
 
             foreach($collection as $item) {
                 if ($i = $collection2->getItemById($item->getId())) {
+                    echo $i->getOrderedQty();
                     $item->setData("ordered_qty", (int) $i->getOrderedQty());
                 } else {
                     $item->setData("ordered_qty", 0);

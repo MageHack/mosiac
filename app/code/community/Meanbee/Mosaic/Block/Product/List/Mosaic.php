@@ -25,7 +25,6 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
 
             foreach($collection as $item) {
                 if ($i = $collection2->getItemById($item->getId())) {
-                    echo $i->getOrderedQty();
                     $item->setData("ordered_qty", (int) $i->getOrderedQty());
                 } else {
                     $item->setData("ordered_qty", 0);

@@ -94,8 +94,10 @@
 
         var currentPage=<?php echo $this->getRequest()->getParam('p', 1) ?>;
         var loadingPage=false;
+        var lastPage = <?php echo $this->getLoadedProductCollection()->setPageSize(Meanbee_Mosaic_Block_Product_List_Mosaic::PAGE_SIZE)->getLastPageNumber(); ?>
+
         $j(window).scroll(function() {
-            if ($j('body').height() <= ($j(window).height() + $j(window).scrollTop()) && !loadingPage) {
+            if ($j('body').height() <= ($j(window).height() + $j(window).scrollTop()) && !loadingPage && currentPage < lastPage) {
                 // load more
                 loadingPage = true;
                 $j.ajax({

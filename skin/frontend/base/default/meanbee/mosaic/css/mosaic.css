@@ -281,6 +281,7 @@ a.more-info:hover {
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 300;
 }
 
 .block-layered-nav .block-title {
@@ -335,7 +336,7 @@ a.more-info:hover {
     top: 0;
     right: 100px;
     width: 70px;
-    z-index: 250;
+    z-index: 350;
 }
 
 #nav-tab a:hover {
@@ -343,4 +344,9 @@ a.more-info:hover {
     transition: font-weight 0.3s linear;
 }
 
-
+#nav-tab.active {
+    background: transparent;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}

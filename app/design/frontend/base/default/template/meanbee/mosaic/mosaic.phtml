@@ -38,6 +38,21 @@
 
 <script type="text/javascript">
     $j(function() {
+
+        $j("#nav-tab").click(function () {
+            $j('#layered-nav').slideToggle();
+            $j('#nav-tab').toggleClass('active');
+
+            if($j('#nav-tab a').text() == "Filter") {
+                $j('#nav-tab a').text("Close x");
+            } else {
+                $j('#nav-tab a').text("Filter");
+            }
+
+            return false;
+        })
+
+
         $j('#mosaic_container').masonry({
             itemSelector: '.box',
             columnWidth: 100,
@@ -62,7 +77,7 @@
                 }
             );
 
-            $j(this).css({zIndex: 999});
+            $j(this).css({zIndex: 200});
 
             this.removeEventListener('webketTransitionEnd');
 

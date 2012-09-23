@@ -2,8 +2,9 @@
 
 Re-thinking how we browse product images. Thinking about device size variation, especially table browzing.
 
-<img src="http://f.cl.ly/items/163o1P0B2a3C0a1i0n0w/mosaic-flip.png" width="800" />
 <img src="http://f.cl.ly/items/11003I0P1l3i2Q0x1l3y/mosaic.png" width="800" />
+<img src="http://f.cl.ly/items/163o1P0B2a3C0a1i0n0w/mosaic-flip.png" width="800" />
+<img src="http://f.cl.ly/items/0G003H3J063V2w1r2d3e/mosaic-filter.png" width="800" />
 
 # Features
 

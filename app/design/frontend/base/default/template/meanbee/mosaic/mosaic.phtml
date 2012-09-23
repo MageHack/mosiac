@@ -4,7 +4,7 @@
     $_taxHelper = $this->helper('tax');
 ?>
 <div id="nav-tab">
-    <a href="#">Filter</a>
+    <a href="#"><?php echo $this->__('Filter') ?></a>
 </div>
 <div id="mosaic_container">
     <div class="box col5">
@@ -28,7 +28,7 @@
                 <div class="face box-back">
                     <div class="details">
                         <p><?php echo $_product->getShortDescription() ?></p>
-                        <a href="#" class="button green bigrounded">Add to Basket</a>
+                        <a href="#" onclick="return false;" class="button green bigrounded"><?php echo $this->__('Add to Basket') ?></a>
                     </div>
                 </div>
             </div>
@@ -39,6 +39,7 @@
 <script type="text/javascript">
     $j(function() {
 
+        // Toggle the layered nav container and button
         $j("#nav-tab").click(function () {
             $j('#layered-nav').slideToggle();
             $j('#nav-tab').toggleClass('active');
@@ -52,38 +53,41 @@
             return false;
         })
 
-
+        // Register masonry.js
         $j('#mosaic_container').masonry({
             itemSelector: '.box',
             columnWidth: 100,
             isAnimated: true
         });
 
+        // Observer when a tile is clicked
         $j('#mosaic_container .box').live('click', function() {
 
+            // Ensure styles are reset on all other tiles
             $j('#mosaic_container .box').removeClass('expanded');
-            $j('#mosaic_container .box').css({zIndex: ''});
             $j('#mosaic_container .box .summary').hide();
 
 
+            // Pick out clicked tile, ready for css3 transitions
             $j(this).addClass('expanded');
 
+            // Wait until tile has grown before showing the product info overlay
             this.addEventListener( 'webkitTransitionEnd',
                 function( event ) {
                     if($j(this).hasClass('expanded')) {
+                        // Need to trigger masonry to reformat once finished
                         $j(this).find('.summary').slideDown(500);
                         $j('#mosaic_container').masonry('reload');
                     }
                 }
             );
 
-            $j(this).css({zIndex: 200});
-
+            // Remove once done as we have other transitions going on
             this.removeEventListener('webketTransitionEnd');
 
         });
 
-
+        // Flip those product descriptions like an absolute boss.
         $j('#mosaic_container .more-info').live('click', function() {
             $j(this).parents('.box-inner').addClass('flipped').mouseleave(function(){
                 $j(this).removeClass('flipped');
@@ -94,8 +98,11 @@
 
         var currentPage=<?php echo $this->getRequest()->getParam('p', 1) ?>;
         var loadingPage=false;
+
+        // Check whether we're on the last page so we don't keep loading the last product HACK CENTRAL
         var lastPage = <?php echo $this->getLoadedProductCollection()->setPageSize(Meanbee_Mosaic_Block_Product_List_Mosaic::PAGE_SIZE)->getLastPageNumber(); ?>
 
+        // Load more products via ajax.
         $j(window).scroll(function() {
             if ($j('body').height() <= ($j(window).height() + $j(window).scrollTop()) && !loadingPage && currentPage < lastPage) {
                 // load more

@@ -117,6 +117,7 @@ a {
     -moz-transition: all 1s; /* Firefox 4 */
     -webkit-transition: all 1s; /* Safari and Chrome */
     -o-transition: all 1s; /* Opera */
+    z-index: 200;
 }
 
 

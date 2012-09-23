@@ -10,7 +10,7 @@
     <?php foreach($_products as $_product): ?>
         <div class="box col<?php echo $_product->getBestsellerGroup() ?>">
             <div class="box-inner">
-                <div class="box-front">
+                <div class="face box-front">
                     <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
                     <div style="display:none" class="summary">
                         <div class="summary-left">
@@ -22,10 +22,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="box-back">
-                    <div style="display:none" class="details">
-                        <h1><?php echo $_product->getName() ?></h1>
-                        <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                <div class="face box-back">
+                    <div class="details">
                         <p><?php echo $_product->getShortDescription() ?></p>
                     </div>
                 </div>
@@ -68,7 +66,10 @@
 
 
         $j('#mosaic_container .more-info').click(function() {
-            $j(this).parents('.box').addClass('info');
+            $j(this).parents('.box-inner').addClass('flipped').mouseleave(function(){
+                $j(this).removeClass('flipped');
+            });
+            return false;
         });
 
     });

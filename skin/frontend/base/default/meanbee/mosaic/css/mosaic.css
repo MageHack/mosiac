@@ -155,7 +155,7 @@ p {
 
 .details p {
     max-height: 300px;
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .details .button {

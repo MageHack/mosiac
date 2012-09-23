@@ -59,7 +59,7 @@
             isAnimated: true
         });
 
-        $j('#mosaic_container .box').click(function() {
+        $j('#mosaic_container .box').live('click', function() {
 
             $j('#mosaic_container .box').removeClass('expanded');
             $j('#mosaic_container .box').css({zIndex: ''});
@@ -84,7 +84,7 @@
         });
 
 
-        $j('#mosaic_container .more-info').click(function() {
+        $j('#mosaic_container .more-info').live('click', function() {
             $j(this).parents('.box-inner').addClass('flipped').mouseleave(function(){
                 $j(this).removeClass('flipped');
             });

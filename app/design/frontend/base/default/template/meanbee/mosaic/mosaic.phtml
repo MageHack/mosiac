@@ -4,16 +4,20 @@
     $_taxHelper = $this->helper('tax');
 ?>
 <div id="mosaic_container">
-    <div class="box col6">
+    <div class="box col5">
         <h1 class="mosaic-title"><?php echo Mage::getStoreConfig('general/store_information/name') ?></h1>
     </div>
     <?php foreach($_products as $_product): ?>
         <div class="box col<?php echo $_product->getBestsellerGroup() ?>">
             <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
             <div style="display:none" class="summary">
-                <p class="product-name"><?php echo $_product->getName() ?></p>
-                <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
-                <a href="#" class="more-info" onclick="return false;">i</a>
+                <div class="summary-left">
+                    <p class="product-name"><?php echo $_product->getName() ?></p>
+                    <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                </div>
+                <div class="summary-right">
+                    <a href="#" class="more-info" onclick="return false;">i</a>
+                </div>
             </div>
             <div style="display:none" class="details">
                 <h1><?php echo $_product->getName() ?></h1>
@@ -36,7 +40,7 @@
 
             $j('#mosaic_container .box').removeClass('expanded');
             $j('#mosaic_container .box').css({zIndex: ''});
-            $j('#mosaic_container .box .summary').fadeOut(1000);
+            $j('#mosaic_container .box .summary').hide();
 
 
             $j(this).addClass('expanded');

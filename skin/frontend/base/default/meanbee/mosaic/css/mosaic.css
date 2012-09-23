@@ -270,8 +270,12 @@ a.more-info:hover {
 }
 
 .block-layered-nav {
-    z-index: 100;
     background: #333;
+
+    -moz-box-shadow: 0 1px 10px rgba(0,0,0,.8);
+    -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.8);
+    box-shadow: 0 1px 10px rgba(0, 0, 0, .8);
+
     color: #DDD;
     display: none;
     opacity: 0.95;
@@ -303,7 +307,8 @@ a.more-info:hover {
 }
 
 .block-layered-nav div.actions {
-    float: right;
+    position: fixed;
+    right: 20px;
 }
 
 #narrow-by-list ol {
@@ -324,6 +329,10 @@ a.more-info:hover {
 
 #nav-tab {
     background: #333;
+
+    -webkit-border-radius: 0 0 4px 4px;
+    -moz-border-radius: 0 0 4px 4px;
+    border-radius: 0 0 4px 4px;
 
     -moz-box-shadow: 0 1px 10px rgba(0,0,0,.8);
     -webkit-box-shadow: 0 1px 10px rgba(0,0,0,.8);

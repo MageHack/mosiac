@@ -3,6 +3,9 @@
     $_coreHelper = $this->helper('core');
     $_taxHelper = $this->helper('tax');
 ?>
+<div id="nav-tab">
+    <a href="#">Filter</a>
+</div>
 <div id="mosaic_container">
     <div class="box col5">
         <h1 class="mosaic-title"><?php echo Mage::getStoreConfig('general/store_information/name') ?></h1>
@@ -35,6 +38,21 @@
 
 <script type="text/javascript">
     $j(function() {
+
+        $j("#nav-tab").click(function () {
+            $j('#layered-nav').slideToggle();
+            $j('#nav-tab').toggleClass('active');
+
+            if($j('#nav-tab a').text() == "Filter") {
+                $j('#nav-tab a').text("Close x");
+            } else {
+                $j('#nav-tab a').text("Filter");
+            }
+
+            return false;
+        })
+
+
         $j('#mosaic_container').masonry({
             itemSelector: '.box',
             columnWidth: 100,
@@ -59,7 +77,7 @@
                 }
             );
 
-            $j(this).css({zIndex: 999});
+            $j(this).css({zIndex: 200});
 
             this.removeEventListener('webketTransitionEnd');
 

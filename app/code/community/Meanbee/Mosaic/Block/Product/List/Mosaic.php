@@ -7,7 +7,7 @@
 class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Product_List {
 
     protected $_bestselling_groups = 3;
-    const PAGE_SIZE = 30;
+    const PAGE_SIZE = 20;
 
     protected function _getProductCollection()
     {

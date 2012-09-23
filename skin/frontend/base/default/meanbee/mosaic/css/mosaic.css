@@ -84,7 +84,7 @@ p {
     position: absolute;
     opacity: 0.8;
     padding: 5px 5px 0;
-    width: 270px;
+    width: 370px;
 }
 
 .summary p.product-name {
@@ -95,8 +95,8 @@ p {
 
 #mosaic_container .expanded img,
 #mosaic_container .expanded {
-    height: 280px;
-    width: 280px;
+    height: 380px;
+    width: 380px;
 
     transition: all 1s;
     -moz-transition: all 1s; /* Firefox 4 */
@@ -129,6 +129,7 @@ p {
     color: #DDD;
     float: right;
     font-style: italic;
+    margin-right: 5px;
     opacity: 0.4;
     padding: 0 9px 0 8px;
     text-decoration: none;

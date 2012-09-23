@@ -9,20 +9,24 @@
     </div>
     <?php foreach($_products as $_product): ?>
         <div class="box col<?php echo $_product->getBestsellerGroup() ?>">
-            <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
-            <div style="display:none" class="summary">
-                <div class="summary-left">
-                    <p class="product-name"><?php echo $_product->getName() ?></p>
-                    <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
-                </div>
-                <div class="summary-right">
-                    <a href="#" class="more-info" onclick="return false;">i</a>
+            <div class="box-front">
+                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
+                <div style="display:none" class="summary">
+                    <div class="summary-left">
+                        <p class="product-name"><?php echo $_product->getName() ?></p>
+                        <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                    </div>
+                    <div class="summary-right">
+                        <a href="#" class="more-info" onclick="return false;">i</a>
+                    </div>
                 </div>
             </div>
-            <div style="display:none" class="details">
-                <h1><?php echo $_product->getName() ?></h1>
-                <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
-                <p><?php echo $_product->getShortDescription() ?></p>
+            <div class="box-back">
+                <div style="display:none" class="details">
+                    <h1><?php echo $_product->getName() ?></h1>
+                    <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                    <p><?php echo $_product->getShortDescription() ?></p>
+                </div>
             </div>
         </div>
     <?php endforeach ?>
@@ -44,15 +48,21 @@
 
 
             $j(this).addClass('expanded');
-            $j(this).find('.summary').fadeIn(1000);
+
+            this.addEventListener( 'webkitTransitionEnd',
+                function( event ) {
+                    if($j(this).hasClass('expanded')) {
+                        $j(this).find('.summary').slideDown(500);
+                        $j('#mosaic_container').masonry('reload');
+                    }
+                }
+            );
 
             $j(this).css({zIndex: 999});
 
-            setTimeout(function() {
-                $j('#mosaic_container').masonry('reload');
-            }, 100);
+            this.removeEventListener('webketTransitionEnd');
 
-        })
+        });
 
-    })
+    });
 </script>

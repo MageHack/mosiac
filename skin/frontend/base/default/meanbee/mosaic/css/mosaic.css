@@ -43,6 +43,7 @@ p {
     margin: 5px;
     opacity: 0.8;
     padding: 5px;
+    perspective: 1000;
 }
 
 #mosaic_container .box:first-child {
@@ -54,6 +55,21 @@ p {
     -moz-transition:opacity 0.25s linear;
     transition:opacity 0.25s linear;
     opacity: 1;
+}
+
+#mosaic_container .box-inner {
+    transform-style: preserve-3d;
+    transition: all 1s linear;
+}
+
+#mosaic_container .box.info {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
+}
+
+#mosaic_container .box-back {
+    transform: rotateY(180deg);
+    -webkit-transform: rotateY(180deg);
 }
 
 #mosaic_container .col1, #mosaic_container .col1 img {
@@ -117,6 +133,11 @@ p {
     -moz-transition: all 1s; /* Firefox 4 */
     -webkit-transition: all 1s; /* Safari and Chrome */
     -o-transition: all 1s; /* Opera */
+}
+
+.box-front, .box-back {
+    position: absolute;
+    backface-visibility: hidden;
 }
 
 .summary a.more-info {

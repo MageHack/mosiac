@@ -9,23 +9,25 @@
     </div>
     <?php foreach($_products as $_product): ?>
         <div class="box col<?php echo $_product->getBestsellerGroup() ?>">
-            <div class="box-front">
-                <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
-                <div style="display:none" class="summary">
-                    <div class="summary-left">
-                        <p class="product-name"><?php echo $_product->getName() ?></p>
-                        <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
-                    </div>
-                    <div class="summary-right">
-                        <a href="#" class="more-info" onclick="return false;">i</a>
+            <div class="box-inner">
+                <div class="box-front">
+                    <img src="<?php echo $this->helper('catalog/image')->init($_product, 'image')->resize(500); ?>" />
+                    <div style="display:none" class="summary">
+                        <div class="summary-left">
+                            <p class="product-name"><?php echo $_product->getName() ?></p>
+                            <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                        </div>
+                        <div class="summary-right">
+                            <a href="#" class="more-info" onclick="return false;">i</a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="box-back">
-                <div style="display:none" class="details">
-                    <h1><?php echo $_product->getName() ?></h1>
-                    <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
-                    <p><?php echo $_product->getShortDescription() ?></p>
+                <div class="box-back">
+                    <div style="display:none" class="details">
+                        <h1><?php echo $_product->getName() ?></h1>
+                        <p><?php echo $_coreHelper->currency($_taxHelper->getPrice($_product, $_product->getFinalPrice(), true)) ?></p>
+                        <p><?php echo $_product->getShortDescription() ?></p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -62,6 +64,11 @@
 
             this.removeEventListener('webketTransitionEnd');
 
+        });
+
+
+        $j('#mosaic_container .more-info').click(function() {
+            $j(this).parents('.box').addClass('info');
         });
 
     });

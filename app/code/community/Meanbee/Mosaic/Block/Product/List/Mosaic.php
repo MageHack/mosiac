@@ -13,7 +13,7 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
                 Mage_Catalog_Model_Product_Visibility::VISIBILITY_IN_CATALOG
             );
 
-            $collection = Mage::getResourceModel('catalog/product_collection')
+            $collection = parent::_getProductCollection()
                             ->addAttributeToSelect(array('image', 'short_description', 'name', 'price'))
                             ->addAttributeToFilter('visibility', $visibility);
 
@@ -48,7 +48,9 @@ class Meanbee_Mosaic_Block_Product_List_Mosaic extends Mage_Catalog_Block_Produc
                 }
             }
 
-            return $collection;
+            Mage::getModel('catalog/layer')->prepareProductCollection($collection);
+
+            return $this->_productCollection = $collection;
         }
         return $this->_productCollection;
     }

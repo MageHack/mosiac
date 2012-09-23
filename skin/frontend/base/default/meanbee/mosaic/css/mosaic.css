@@ -68,6 +68,10 @@ body {
     height: 280px;
 }
 
+#mosaic_container .col6 {
+    width: 380px;
+}
+
 #mosaic_container .summary {
     background-color: #333;
     color: #EEE;

@@ -93,15 +93,18 @@
 
 
         var currentPage=<?php echo $this->getRequest()->getParam('p', 1) ?>;
+        var loadingPage=false;
         $j(window).scroll(function() {
-            if ($j('body').height() <= ($j(window).height() + $j(window).scrollTop())) {
+            if ($j('body').height() <= ($j(window).height() + $j(window).scrollTop()) && !loadingPage) {
                 // load more
+                loadingPage = true;
                 $j.ajax({
                     url: '<?php echo Mage::getBaseUrl() . 'mosaic/ajax/category/' ?>',
                     dataType: 'json',
                     data: {p: ++currentPage},
                     success: function(data) {
                         var boxes = $j(data.content.block).find('.box');
+                        loadingPage = false;
                         // Chop out the title;
                         boxes.splice(0, 1)
                         $j('#mosaic_container').append(boxes).masonry('appended',boxes);
